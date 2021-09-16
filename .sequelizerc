@@ -1,0 +1,9 @@
+// Esse arquivo é que irá contar as 4 configs. para acesso ao nosso db
+const path = require('path');
+
+module.exports = {
+    config: path.resolve('./database/config','config.json'),
+    "models-path": path.resolve('./database/models'),
+    "migrations-path": path.resolve('./database/migrations'),
+    "seeders-path": path.resolve('./database/seeders')
+}

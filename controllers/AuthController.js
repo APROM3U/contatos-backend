@@ -1,4 +1,4 @@
-module.exports = {
+const AuthController = {
     registrar: (req, res)=>{
        console.log('registrando...');
        return res.send('registrando...');
@@ -8,3 +8,5 @@ module.exports = {
        return res.send('logando...');
     }
 }
+
+module.exports = AuthController;
