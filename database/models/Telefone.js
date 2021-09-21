@@ -1,0 +1,15 @@
+module.exports = (sequelize, DataTypes) => {
+    const t = sequelize.define(
+        'Telefone',
+        {
+            //id: { type: DataTypes.INTEGER, autoIncrement: true,  primarykey: true },
+            numero: DataTypes.STRING,
+            contatos_id: DataTypes.INTEGER
+        },
+        {
+            tableName: 'telefones',
+            timestamps: false
+        }
+    )
+    return t;
+}
