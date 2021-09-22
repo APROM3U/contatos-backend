@@ -22,6 +22,13 @@ module.exports = (sequelize, DataTypes) => {
         }
     );
 
+    u.associate = (models) => {
+        // Associando usuário com contatos, The type of the association. One of HasMany, BelongsTo, HasOne, BelongsToMany
+        u.hasMany(models.Contato, {as: 'contatos', foreignKey: 'usuarios_id'}) //função hasMany - um para muitos
+        // muitos para muitos
+        // um para um
+    }
+
     return u;
 
 }

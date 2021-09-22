@@ -1,16 +1,18 @@
 // Importando a função utilizando desconstrução
-const { Usuario } = require('../database/models');
+const { Usuario, sequelize } = require('../database/models');
 
 // Encontre pela primary key
-Usuario.findByPk(1).then(
+Usuario.findByPk(1, {include:'contatos'}).then(
     
     // retorn o usuario com id = 1
-    u => console.log(u.toJSON())
+    u => console.log(u.toJSON()),
+    sequelize.close()
 );
 
 // retorna todos users
 Usuario.findAll().then(
-    user => console.log(user.map( u => u.toJSON()))
+    user => console.log(user.map( u => u.toJSON())),
+    sequelize.close()
 );
 
 // insert dados na tabela
