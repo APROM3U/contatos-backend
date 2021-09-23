@@ -23,8 +23,18 @@ module.exports = (sequelize, DataTypes) => {
     );
 
     u.associate = (models) => {
-        // Associando usuário com contatos, The type of the association. One of HasMany, BelongsTo, HasOne, BelongsToMany
+        // Associando usuário com contatos (um user possui muitos contatos), The type of the association. One of HasMany, BelongsTo, HasOne, BelongsToMany
         u.hasMany(models.Contato, {as: 'contatos', foreignKey: 'usuarios_id'}) //função hasMany - um para muitos
+        
+        //u.hasMany(models.Post, {})
+        // Associando um user com outros users (muitos para muitos)
+        u.belongsToMany(models.Usuario, {
+            as:'colegas',              // Nome do relacionamento!
+            through:'amizades',         // through -> através | Nome da tabela intermediária! 
+            foreignKey:'usuarios1_id',  // id do model codade na tbl intermediária
+            otherKey:'usuarios2_id',    // id do model relacionado na tbl intermediária
+            timestamps:false
+        })
         // muitos para muitos
         // um para um
     }

@@ -12,6 +12,15 @@ module.exports = (sequelize, DataTypes) =>{
             tableName: 'contatos',
             timestamps: false
         }
-    )
+    );
+
+    c.associate = (models) => {
+
+        c.hasMany(models.Telefone, {as:'telefones', foreignKey: 'contatos_id'}); //função hasMany - um para muitos
+       
+        // um contato tem muitos user
+        c.belongsTO(models.Usuario, {as:'usuario', foreignKey:id})
+    }
+
     return c;
 }

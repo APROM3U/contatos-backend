@@ -1,5 +1,5 @@
 const { Contato, sequelize } = require('../database/models');
-
+/*
 async function teste(){
     let resultado = await Contato.create({
         nome:'Jorge', 
@@ -16,3 +16,10 @@ async function teste(){
 } 
 
 teste();
+*/
+Contato.findByPk(3,{include:'telefones'}).then(
+    c => {
+        console.log(c.numero)
+        sequelize.close()
+    }
+)

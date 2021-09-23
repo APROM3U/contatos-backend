@@ -2,7 +2,7 @@
 const { Usuario, sequelize } = require('../database/models');
 
 // Encontre pela primary key
-Usuario.findByPk(1, {include:'contatos'}).then(
+Usuario.findByPk(1, {include:['contatos', 'colegas']}).then(
     
     // retorn o usuario com id = 1
     u => console.log(u.toJSON()),
