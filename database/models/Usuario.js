@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
             //id: { type: DataTypes.INTEGER, autoIncrement: true,  primarykey: true },
             nome: DataTypes.STRING, // irá mapear para varchar
             email: {type: DataTypes.STRING, allwNull: false},
-            senha: DataTypes.SRING
+            senha: DataTypes.STRING
         }, 
         // 3º pram - Algumas opções
         {
@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
 
     u.associate = (models) => {
         // Associando usuário com contatos (um user possui muitos contatos), The type of the association. One of HasMany, BelongsTo, HasOne, BelongsToMany
-        u.hasMany(models.Contato, {as: 'contatos', foreignKey: 'usuarios_id'}) //função hasMany - um para muitos
+        u.hasMany(models.Contato, {as:'contatos', foreignKey: 'usuarios_id'}) //função hasMany - um para muitos
         
         //u.hasMany(models.Post, {})
         // Associando um user com outros users (muitos para muitos)
@@ -38,6 +38,9 @@ module.exports = (sequelize, DataTypes) => {
         // muitos para muitos
         // um para um
     }
+
+    // um para um
+    // u.hasOne(models.Perfil,{as:'perfil', foreignKey:'usuarios_id'});
 
     return u;
 
