@@ -11,15 +11,15 @@
 
 'use strict';
 
-const { sequelize } = require("../models");
+//const { sequelize } = require("../models");
 
 module.exports = {
   // FAZER
   up: async (queryInterface, Sequelize) => {
-    return await queryInterface.createTable(
+    await queryInterface.createTable(
       'usuarios', //nome da tabela
       { // colunas da tabela
-        id: {type: Sequelize.DataTypes.INTEGER, autoIncrement: true,  primarykey: true },
+        id: {type: Sequelize.DataTypes.INTEGER, autoIncrement:true, primaryKey: true, allowNull: false },
         nome: {type: Sequelize.DataTypes.STRING(45), allowNull: false},
         email: {type: Sequelize.DataTypes.STRING(45), allowNull: false},
         senha: Sequelize.DataTypes.STRING(256) //para senha necessário 256

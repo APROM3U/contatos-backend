@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) =>{
         c.hasMany(models.Telefone, {as:'telefones', foreignKey: 'contatos_id'}); //função hasMany - um para muitos
        
         // um contato tem muitos user
-        c.belongsTO(models.Usuario, {as:'usuario', foreignKey:id})
+        c.belongsTo(models.Usuario, {as:'usuario', foreignKey:"id"})
     }
 
     return c;
