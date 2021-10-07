@@ -1,0 +1,34 @@
+@hostname = 127.0.0.1
+@port = 3000
+@host = {{hostname}}:{{port}}
+@contentType = application/json
+@createdAt = {{$datetime iso8601}}
+@modifiedBy = {{$processEnv USERNAME}}
+###
+@name = hello
+GET https://{{host}}/authors HTTP/1.1
+###
+POST  /registrar HTTP/1.1
+Host: {{host}}
+Content-Type: {{contentType}}
+
+{
+    "nome": "iago",
+    "email":"iago@digitalhouse.com",
+    "senha": "123456"
+}
+###
+POST /login HTTP/1.1
+Host: {{host}}
+Content-Type: {{contentType}}
+
+{
+    "email":"iago@digitalhouse.com",
+    "senha":"123456"
+}
+
+###
+GET /contatos HTTP/1.1
+Host: {{host}}
+Content-Type: {{contentType}}
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwibm9tZSI6ImlhZ28iLCJlbWFpbCI6ImlhZ29AZGlnaXRhbGhvdXNlLmNvbSIsImlhdCI6MTYzMzU2NzIzMX0.IDTRE46upnQmwHDEZbDmtaIHLLN5Xuke1kSNxV_1M4g
